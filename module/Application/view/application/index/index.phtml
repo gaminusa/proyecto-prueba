@@ -1,0 +1,101 @@
+<!--<div class="jumbotron">
+    <h1><?php echo sprintf($this->translate('Welcome to %sZend Framework 2%s'), '<span class="zf-green">', '</span>') ?></h1>
+    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
+    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
+</div>-->
+
+
+<script type="text/javascript"> 
+    var url_save = "<?php echo $this->url('home') ?>";
+    
+    $(document).ready(function(){
+        console.log("e")
+        $("#enviar").click(function(){
+            var o_form = new Object();
+            o_form.nombre = $("#nombre").val();
+            o_form.apellidos = $("#apellidos").val();
+            o_form.fecha_nacimiento = $("#fecha_nacimiento").val();
+            o_form.dni = $("#dni").val();
+            o_form.telefono = $("#telefono").val();
+            o_form.codigo_premiacion = $("#codigo_premiacion").val();
+            o_form.email = $("#email").val();
+            o_form.agencia = $("#agencia").val();
+            o_form.direccion = $("#direccion").val();
+            $.ajax({
+                url:'/application/index/save'
+                ,data:{form:o_form}
+                ,type:'POST'
+                ,datatype:'json'
+                ,async:true
+                ,success:function(response){
+                  ;
+                }
+            });  
+        });
+    });
+
+</script>
+
+
+<div class="row">
+    <form class="form-horizontal" method="POST" id="form_registro">
+        <div class="form-group">
+            <label for="nombre" class="col-sm-5 control-label">Nombre(s)</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="apellidos" class="col-sm-5 control-label">Apellidos</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" name="apellidos">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="fecha_nacimiento" class="col-sm-5 control-label">Fecha de Nacimiento</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="fecha_nacimiento" placeholder="Ingrese su Fecha de Nacimiento" name="fecha_nacimiento">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dni" class="col-sm-5 control-label">DNI</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="dni" placeholder="Ingrese su DNI" name="dni">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="telefono" class="col-sm-5 control-label">Teléfono</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="telefono" placeholder="Ingrese su telefono" name="telefono">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="codigo_premiacion" class="col-sm-5 control-label">Código de Premiación</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="codigo_premiacion" placeholder="Ingrese su Código de Premiación" name="codigo_premiacion">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-5 control-label">Correo Electrónico</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="email" placeholder="Ingrese su Correo Electrónico" name="email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="agencia" class="col-sm-5 control-label">Agencia BBVA</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="agencia" placeholder="Escriba el nombre de la Agencia" name="agencia">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="direccion" class="col-sm-5 control-label">Direccion</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="direccion" placeholder="Escriba su Direccion" name="direccion">
+            </div>
+        </div>
+        <center> 
+            <button type="submit" id="enviar" class="btn btn-danger">Enviar</button>
+        </center>
+    </form>
+</div>
+
