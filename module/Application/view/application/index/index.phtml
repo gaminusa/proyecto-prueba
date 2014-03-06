@@ -6,10 +6,9 @@
 
 
 <script type="text/javascript"> 
-    var url_save = "<?php echo $this->url('home') ?>";
+    var url_save = "<?php echo $this->url('save') ?>";
     
     $(document).ready(function(){
-        console.log("e")
         $("#enviar").click(function(){
             var o_form = new Object();
             o_form.nombre = $("#nombre").val();
@@ -94,7 +93,7 @@
             </div>
         </div>
         <center> 
-            <button type="submit" id="enviar" class="btn btn-danger">Enviar</button>
+            <button id="enviar" type="button" class="btn btn-primary">Guardar</button>
         </center>
     </form>
 </div>

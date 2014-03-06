@@ -20,6 +20,16 @@ return array(
                     ),
                 ),
             ),
+            'save' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/save',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'save',
+                    ),
+                ),
+            ),
            
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
