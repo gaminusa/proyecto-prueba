@@ -8,7 +8,7 @@ class TemporalChapa extends TableGateway {
     protected $adapater;
 
     public function __construct(Adapter $adapter = null, $databaseSchema = null, ResultSet $selectResultPrototype = null) {
-        
+        $this->adapater = $adapter;
         return parent::__construct('default_temporal_chapas2', $adapter, $databaseSchema, $selectResultPrototype);
     }
     
@@ -31,6 +31,11 @@ class TemporalChapa extends TableGateway {
     
     public function get(){
         return $this->select()->toArray();
+    }
+    
+    public function duplicado($codigo){
+        $row = $this->select(array('codigo_premio' => $codigo))->current();
+        return count($row);
     }
 
 }
