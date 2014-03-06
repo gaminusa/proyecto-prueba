@@ -35,3 +35,31 @@ div.container a.brand {
     margin-left: 0;
     padding: 8px 20px 12px 40px;
 }
+
+/* pha-cusquena-manual-register */
+
+/* Set fonts */
+@font-face {
+	font-family: 'Calibri Bold';
+	src: url('../fonts/calibrib-webfont.eot');
+	src: local('Calibri Bold'), /* locally call if the user have the font installed on his system */
+			 url('../fonts/calibrib-webfont.woff') format('woff'),
+			 url('../fonts/calibrib-webfont.ttf') format('truetype'),
+			 url('../fonts/calibrib-webfont.svg#webfont') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+	font-family: 'Calibri Regular';
+	src: url('../fonts/calibri-webfont.eot');
+	src: local('Calibri Regular'), /* locally call if the user have the font installed on his system */
+			 url('../fonts/calibri-webfont.woff') format('woff'),
+			 url('../fonts/calibri-webfont.ttf') format('truetype'),
+			 url('../fonts/calibri-webfont.svg#webfont') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+
+
