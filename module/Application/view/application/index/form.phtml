@@ -67,12 +67,12 @@
 	    $(function(){
 	    	
 	    	$('#form_registro input').placeholder();
-	
+	    	
 			$("#form_registro").validate({
-				debug: false,
+				debug: true,
 				ignore: '',
-				onkeyup: function(element){
-					if ( event.which === 9 && this.elementValue(element) === "" ) {
+				onkeyup: function(element, event){
+					if ( event.which === 9 && this.elementValue(element)  === "") {
 			            return;
 			        } else {
 			            this.element(element);
@@ -91,8 +91,12 @@
 					$(form).ajaxSubmit(options);
 				},
 				rules: {
-					nombre: "required",
-					apellidos: "required",
+					nombre: {
+						required: true
+					},
+					apellidos: {
+						required: true
+					},
 					email: {
 						required: true,
 						email: true
@@ -161,17 +165,20 @@
 				}
 			});
 	
-	    });
 
-		
-		// filter & build date
-		$('#form_day, #form_month, #form_year').on('keyup', function(evt){
-			this.value = this.value.replace(/[^0-9]/g, '');
-			if(this.value.length == parseInt(this.attributes['maxlength'].value))
-			{
-				$('input#fecha_nacimiento').val( [ $('input#form_year').val(), $('input#form_month').val(), $('input#form_day').val() ].join('/') );
-			}
-		});
+			$('#nombre, #apellidos').filter_input({regex:'[a-zA-Z\u00C1\u00E1\u00C9\u00E9\u00CD\u00ED\u00D3\u00F3\u00DA\u00FA\u00D1\u00F1 ]'}); 
+			$('#dni, #telefono').filter_input({regex:'[0-9]'})
+			
+			// filter & build date
+			$('#form_day, #form_month, #form_year').on('keyup', function(evt){
+				this.value = this.value.replace(/[^0-9]/g, '');
+				if(this.value.length == parseInt(this.attributes['maxlength'].value))
+				{
+					$('input#fecha_nacimiento').val( [ $('input#form_year').val(), $('input#form_month').val(), $('input#form_day').val() ].join('/') );
+				}
+			});
+
+	    });
 		
 	</script>
 
