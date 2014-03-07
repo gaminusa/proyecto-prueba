@@ -122,10 +122,21 @@ body
 			margin: 170px 0 0;
 		}
 		
+		.form-cusquena
+		{
+			margin: 50px 0 0;
+		}
+		
+			.form-cusquena .form-group
+			{
+				margin: 0 0 10px;
+			}
+		
 			.form-cusquena label
 			{
 				color: #fff;
 				font: normal normal 16px/1.3em 'Calibri Bold', Arial, sans-serif;
+				margin-bottom: 2px;
 				text-transform: uppercase;
 				
 				-webkit-text-shadow:  0 2px 2px rgba(43, 24, 6, 0.98);
@@ -137,14 +148,16 @@ body
 			{
 				border: 1px solid #821718;
 				font-size: 12px;
-				height: 30px;
+				height: 28px;
+				padding: 5px 12px;
 					
 				-webkit-border-radius: 0;
 				-moz-border-radius: 0;
 				border-radius: 0;
 			}
 			
-			.form-cusquena .btn-sign-in
+			.form-cusquena .btn-sign-in,
+			.form-cusquena .btn-saveuser
 			{
 				background: url('../img/sprite.png') no-repeat 0 -257px;
 				border: 0;
@@ -152,6 +165,11 @@ body
 				overflow: hidden;
 				text-indent: -999px;
 				width: 86px;
+			}
+	
+			.form-cusquena .btn-saveuser
+			{
+				background: url('../img/sprite.png') no-repeat -86px -257px;
 			}
 	
 	.mainfooter
