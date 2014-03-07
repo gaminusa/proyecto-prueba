@@ -8,6 +8,7 @@ use Application\Model\TemporalChapa;
 use Application\Model\PromoCodigo;
 use Application\Model\PromoChico;
 use Application\Model\PromoGanador;
+use Application\Model\User;
 
 
 class IndexController extends AbstractActionController
@@ -18,18 +19,23 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
-        
+
         return new ViewModel();
     }
     
+    public function logginAction(){
+      
+        return $this->getResponse()->setContent(json_encode(array('value' => 1)));    
+        
+    }
+    
     public function formAction(){
-        echo "entro";
+        
         return new ViewModel();
     }
     
     public function saveAction() {
         if ($this->getRequest()->isPost()) {
-
             $form = $this->getRequest()->getPost('form');
             $codigo = $form['codigo_premiacion'];
             $dni = $form['dni'];

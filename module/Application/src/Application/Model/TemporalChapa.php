@@ -2,6 +2,7 @@
 namespace Application\Model;
 use Zend\Db\Adapter\Adapter;
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Sql;
 
 class TemporalChapa extends TableGateway {
 

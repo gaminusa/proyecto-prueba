@@ -1,5 +1,5 @@
 <div class="row">
-    <form class="form-horizontal" method="POST" id="form_login" action="<?php echo $this->url('form') ?>"> 
+    <form class="form-horizontal" method="POST" id="form_login"> 
         <div class="form-group">
             <label for="user" class="col-sm-5 control-label">Usuario</label>
             <div class="col-sm-4">
@@ -13,8 +13,31 @@
             </div>
         </div>
         <center> 
-            <button class="btn btn-large btn-primary" type="submit">Loggin</button>
+            <button id="loggin" type="button" class="btn btn-primary">Loggin</button>
         </center>
     </form>
     
 </div>
+
+<script type="text/javascript"> 
+    var url_save = "<?php echo $this->url('save') ?>";
+    
+    $(document).ready(function(){
+        $("#loggin").click(function(){
+            var o_form = new Object();
+            o_form.user = $("#user").val();
+            o_form.password = $("#password").val();
+            $.ajax({
+                url:'/application/index/loggin'
+                ,data:{form:o_form}
+                ,type:'POST'
+                ,datatype:'json'
+                ,async:true
+                ,success:function(response){
+                  $(location).attr('href',"<?php echo $this->url('form') ?>");                 
+                }
+            });  
+        });
+    });
+
+</script>
