@@ -16,8 +16,6 @@
     </center>
 
 </form>
-    
-
 
 <script type="text/javascript"> 
     var url_save = "<?php echo $this->url('save') ?>";
@@ -28,13 +26,19 @@
             o_form.user = $("#user").val();
             o_form.password = $("#password").val();
             $.ajax({
-                url:'/application/index/loggin'
+                url:'/application/index/login'
                 ,data:{form:o_form}
                 ,type:'POST'
                 ,datatype:'json'
                 ,async:true
                 ,success:function(response){
-                  $(location).attr('href',"<?php echo $this->url('form') ?>");                 
+                    var rpta = JSON.parse(response);
+                        if(rpta.value == 1){
+                             $(location).attr('href',"<?php echo $this->url('form') ?>");                 
+                        }
+                        if(rpta.value==0){console.log('invalidos');}
+                        if(rpta.value==2){console.log('invalidos');}
+                  
                 }
             });  
         });

@@ -40,6 +40,16 @@ return array(
                     ),
                 ),
             ),
+            'login' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/login',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Login',
+                        'action'     => 'login',
+                    ),
+                ),
+            ),
            
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
@@ -77,6 +87,7 @@ return array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
+            
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
@@ -94,7 +105,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
         ),
     ),
     'view_manager' => array(

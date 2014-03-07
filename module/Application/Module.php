@@ -12,6 +12,10 @@ namespace Application;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
+
+use Zend\Authentication\Adapter\DbTable as DbTableAuthAdapter;
+use Zend\Authentication\AuthenticationService;
+
 class Module
 {
     public function onBootstrap(MvcEvent $e)
@@ -36,4 +40,20 @@ class Module
             ),
         );
     }
+    
+    public function getServiceConfig() {
+        return array(
+            'factories' => array(
+                'AuthService' => function($sm) {
+            $dbAdapter = $sm->get('Zend\Db\Adapter');
+            $dbTableAuthAdapter = new DbTableAuthAdapter($dbAdapter, 'default_users', 'username', 'password');
+            $authService = new AuthenticationService();
+            $authService->setAdapter($dbTableAuthAdapter);
+//                    $authService->setStorage($sm->get('SanAuth\Model\MyAuthStorage'));
+            return $authService;
+        },
+            )
+        );
+    }
+
 }

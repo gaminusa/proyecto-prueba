@@ -9,30 +9,68 @@ use Application\Model\PromoCodigo;
 use Application\Model\PromoChico;
 use Application\Model\PromoGanador;
 use Application\Model\User;
+use Zend\Form\Annotation\AnnotationBuilder;
+
 
 
 class IndexController extends AbstractActionController
 {
-    
     public $dbAdapter;
-    
 
     public function indexAction()
     {
-
-        return new ViewModel();
+        $view = new ViewModel();
+        return $view;
     }
     
-    public function logginAction(){
-      
-        return $this->getResponse()->setContent(json_encode(array('value' => 1)));    
-        
-    }
     
     public function formAction(){
-
-        return new ViewModel();
+        $sm = $this->getServiceLocator();
+        $auth = $sm->get('AuthService');
+        
+        if(!$auth->hasIdentity()){
+            return $this->redirect()->toRoute('home');
+        }
+        
+        $auth->clearIdentity();
     }
+    
+    public function loginAction(){
+        
+        $sm = $this->getServiceLocator();
+        $auth = $sm->get('AuthService');
+        
+        $request = $this->getRequest();
+        
+        if ($request->isPost()) {
+            $post = $request->getPost('form');
+            if ($this->_isLoginFormValid($post)) {
+                $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter');
+                $o_user = new User($this->dbAdapter);
+                $salt = $o_user->get($post['user']);
+                $password = sha1($post['password'].$salt);
+                $auth->getAdapter()->setIdentity($post['user'])->setCredential($password);
+                $result = $auth->authenticate();
+                if ($result->isValid()){
+                    $auth->getStorage()->write($auth->getAdapter()->getResultRowObject(null,$password));
+                        return $this->getResponse()->setContent(json_encode(array('value' => 1)));
+                }else {
+                    return $this->getResponse()->setContent(json_encode(array('value' => 0)));
+                }
+            } else {
+                return $this->getResponse()->setContent(json_encode(array('value' => 2)));
+            }
+        }    
+    }
+    
+    
+    private function _isLoginFormValid($data) {
+        if(strlen($data['user'])==0){return false;}
+        if(strlen($data['password'])==0){return false;}
+        return true;
+    }
+
+    
     
     public function saveAction() {
         if ($this->getRequest()->isPost()) {
