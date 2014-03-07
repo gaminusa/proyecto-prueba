@@ -124,6 +124,7 @@ body
 		
 			.form-cusquena .form-group
 			{
+				height: 58px;
 				margin: 0 0 10px;
 			}
 		
@@ -151,6 +152,16 @@ body
 				-moz-border-radius: 0;
 				border-radius: 0;
 			}
+			
+				.form-cusquena .form-group div.error
+				{
+					background: #f00;
+					color: #fff;
+					display: block;
+					font-size: 10px;
+					padding: 0 5px;
+					width: 80%;
+				}
 
 			.form-cusquena input#form_day,
 			.form-cusquena input#form_month,
