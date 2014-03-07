@@ -155,9 +155,12 @@ body
 			
 				.form-cusquena .form-group div.error
 				{
-					color: #ff0;
+					background: #f00;
+					color: #fff;
 					display: block;
 					font-size: 10px;
+					padding: 0 5px;
+					width: 80%;
 				}
 
 			.form-cusquena input#form_day,
