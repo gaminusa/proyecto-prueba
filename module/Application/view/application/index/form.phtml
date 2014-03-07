@@ -77,7 +77,16 @@
 				},
 				submitHandler: function(form) {
 					
-					var o_form = JSON.stringify($(form).serializeObject());
+					var o_form = new Object();
+					o_form.nombre = $('#nombre').val();
+					o_form.apellidos = $('#apellidos').val();
+					o_form.email = $('#email').val();
+					o_form.fecha_nacimiento = $('#fecha_nacimiento').val();
+					o_form.dni = $('#dni').val();
+					o_form.telefono = $('#telefono').val();
+					o_form.codigo_premiacion = $('#codigo_premiacion').val();
+					o_form.agencia = $('#agencia').val();
+					
 					$.ajax({
 		                url:url_save
 		                ,data:{form:o_form}
