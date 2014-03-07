@@ -9,28 +9,24 @@
     var url_save = "<?php echo $this->url('save') ?>";
     
     $(document).ready(function(){
-        $("#enviar").click(function(){
-            var o_form = new Object();
-            o_form.nombre = $("#nombre").val();
-            o_form.apellidos = $("#apellidos").val();
-            o_form.fecha_nacimiento = $("#fecha_nacimiento").val();
-            o_form.dni = $("#dni").val();
-            o_form.telefono = $("#telefono").val();
-            o_form.codigo_premiacion = $("#codigo_premiacion").val();
-            o_form.email = $("#email").val();
-            o_form.agencia = $("#agencia").val();
-            o_form.direccion = $("#direccion").val();
-            $.ajax({
-                url:'/application/index/save'
-                ,data:{form:o_form}
-                ,type:'POST'
-                ,datatype:'json'
-                ,async:true
-                ,success:function(response){
-                  ;
-                }
-            });  
-        });
+
+		$("#form_registro").validate({
+			debug: true,
+			rules: {
+				nombre: "required",
+				apellidos: "required",
+				email: {
+					required: true,
+					email: true
+				}
+			},
+			messages: {
+				nombre: "",
+				apellidos: "",
+				email: ""
+			}
+		});    	
+
     });
 
 </script>
@@ -40,40 +36,53 @@
     <form class="form form-cusquena" method="POST" id="form_registro">
         <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
+            <input type="text" class="form-control" id="nombre" placeholder="ESCRIBE EL NOMBRE" name="nombre">
         </div>
         <div class="form-group">
             <label for="apellidos">Apellidos</label>
-            <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" name="apellidos">
-        </div>
-        <div class="form-group">
-            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-            <input type="text" class="form-control" id="fecha_nacimiento" placeholder="Ingrese su Fecha de Nacimiento" name="fecha_nacimiento">
-        </div>
-        <div class="form-group">
-            <label for="dni">DNI</label>
-            <input type="text" class="form-control" id="dni" placeholder="Ingrese su DNI" name="dni">
-        </div>
-        <div class="form-group">
-            <label for="telefono">Tel&eacute;fono</label>
-            <input type="text" class="form-control" id="telefono" placeholder="Ingrese su telefono" name="telefono">
-        </div>
-        <div class="form-group">
-            <label for="codigo_premiacion">C&oacute;digo de Premiaci&oacute;n</label>
-            <input type="text" class="form-control" id="codigo_premiacion" placeholder="Ingrese su C&oacute;digo de Premiaci&oacute;n" name="codigo_premiacion">
+            <input type="text" class="form-control" id="apellidos" placeholder="ESCRIBE EL APELLIDO" name="apellidos">
         </div>
         <div class="form-group">
             <label for="email">Correo Electr&oacute;nico</label>
-            <input type="text" class="form-control" id="email" placeholder="Ingrese su Correo Electr&oacute;nico" name="email">
+            <input type="text" class="form-control" id="email" placeholder="ESCRIBE EL CORREO ELECTR&Oacute;NICO" name="email">
         </div>
         <div class="form-group">
-            <label for="agencia">Agencia BBVA</label>
-            <input type="text" class="form-control" id="agencia" placeholder="Escriba el nombre de la Agencia" name="agencia">
+            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+            <div class="row">
+            	<div class="col-md-3">
+				    <input type="text" class="form-control" id="form_day" name="form_day" maxlength="2" tabindex="4" value="DD" data-last-value="DD" data-reg="">
+			    </div>
+            	<div class="col-md-3">
+				    <input type="text" class="form-control" id="form_month" name="form_month" maxlength="2" tabindex="5" value="MM" data-last-value="MM" data-reg="">
+			    </div>
+            	<div class="col-md-3">
+				    <input type="text" class="form-control" id="form_year" name="form_year" maxlength="4" tabindex="6" value="AAAA" data-last-value="AAAA" data-reg="">
+			    </div>
+            </div>
+            <input type="hidden" class="form-control" id="fecha_nacimiento" placeholder="Ingrese su Fecha de Nacimiento" name="fecha_nacimiento">
         </div>
+        <div class="form-group">
+            <label for="dni">DNI</label>
+            <input type="text" class="form-control" id="dni" placeholder="ESCRIBE EL DNI" name="dni">
+        </div>
+        <div class="form-group">
+            <label for="telefono">Tel&eacute;fono</label>
+            <input type="text" class="form-control" id="telefono" placeholder="ESCRIBE EL N&Uacute;MERO DE TEL&Eacute;FONO" name="telefono">
+        </div>
+        <div class="form-group">
+            <label for="codigo_premiacion">C&oacute;digo</label>
+            <input type="text" class="form-control" id="codigo_premiacion" placeholder="ESCRIBE EL C&Oacute;DIGO" name="codigo_premiacion">
+        </div>
+        <div class="form-group">
+            <label for="agencia">Ingresa la agencia BBVA CONTINENTAL m&aacute;s cerca </label>
+            <input type="text" class="form-control" id="agencia" placeholder="ESCRIBA EL NOMBRE DE LA AGENCIA" name="agencia">
+        </div>
+<!--        
         <div class="form-group">
             <label for="direccion">Direcci&oacute;n</label>
             <input type="text" class="form-control" id="direccion" placeholder="Escriba su Direcci&oacute;n" name="direccion">
         </div>
+-->
         <div class="form-group">
             <button id="enviar" type="button" class="btn btn-primary btn-saveuser">Guardar</button>
         </div>
