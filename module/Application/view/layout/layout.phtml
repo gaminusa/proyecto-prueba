@@ -6,7 +6,7 @@
         <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?php echo $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+//            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
             ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
         ?>
 
@@ -31,16 +31,18 @@
     	<div id="wrapper">
     	
     		<div class="maincontent">
-    			<div class="row">
-    				<div class="col-md-6">
-		    			<h1 class="site-title"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></h1>
-		    			<span class="site-logo"></span>
-    				</div>
-    				<div class="col-md-4 col-md-offset-1">
-    					
-			            <?php echo $this->content; ?>
-    					
-    				</div>
+    			<div class="container" style="width: 970px !important;">
+	    			<div class="row">
+	    				<div class="col-md-6">
+			    			<h1 class="site-title"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></h1>
+			    			<span class="site-logo"></span>
+	    				</div>
+	    				<div class="col-md-4 col-md-offset-1">
+	    					
+				            <?php echo $this->content; ?>
+	    					
+	    				</div>
+	    			</div>
     			</div>
     		</div><!-- .maincontent -->
 			<footer class="mainfooter">
