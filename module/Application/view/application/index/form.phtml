@@ -1,5 +1,5 @@
 <div class="row">
-    <form class="form form-cusquena" action="<?php echo $this->url('save') ?>" method="POST" id="form_registro">
+    <form class="form form-cusquena" method="POST" id="form_registro">
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" id="nombre" placeholder="ESCRIBE EL NOMBRE" name="nombre" tabindex="1">
@@ -77,13 +77,8 @@
 				},
 				submitHandler: function(form) {
 					
-					var options = {
-						success: function(responseText, statusText, xhr, $form){
-							
-						}
-					}
+					console.log( $(form).serialize() );
 					
-					$(form).ajaxSubmit(options);
 				},
 				rules: {
 					nombre: {
