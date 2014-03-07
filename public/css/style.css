@@ -79,7 +79,40 @@ body
 	{
 		display: block;
 		height: 696px;
+		overflow: hidden;
+		position: relative;
 	}
+	
+		.site-title
+		{
+			display: block;
+			margin: 30px auto 0;
+			height: 256px;
+			width: 243px;
+		}
+		
+			.site-title a:link,
+			.site-title a:visited,
+			.site-title a:active,
+			.site-title a:hover
+			{
+				background: url('../img/sprite.png') no-repeat 0 0;
+				display: block;
+				height: 256px;
+				overflow: hidden;
+				text-indent: -999px;
+				width: 243px;
+			}
+
+		.site-logo
+		{
+			background: url('../img/beers.png') no-repeat 0 0;
+			height: 379px;
+			left: 0;
+			position: absolute;
+			top: 345px;
+			width: 510px;
+		}
 	
 		.form-login
 		{
