@@ -23,7 +23,6 @@ class IndexController extends AbstractActionController
     }
     
     public function formAction(){
-        echo "entro";
         return new ViewModel();
     }
     
