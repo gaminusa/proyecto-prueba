@@ -94,6 +94,7 @@
 					form_month: "required",
 					form_year: "required",
 					fecha_nacimiento: {
+						required: true,
 						date: true
 					},
 					dni: {
@@ -121,7 +122,10 @@
 					form_day: '',
 					form_month: '',
 					form_year: '',
-					fecha_nacimiento: 'Llene correctamente este campo',
+					fecha_nacimiento: {
+						required: 'Llene correctamente este campo',
+						date: 'Llene correctamente este campo'
+					},
 					dni: {
 						required: 'Llene correctamente este campo',
 						digits: 'Llene correctamente este campo'
