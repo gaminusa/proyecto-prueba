@@ -152,6 +152,13 @@ body
 				-moz-border-radius: 0;
 				border-radius: 0;
 			}
+			
+				.form-cusquena .form-group div.error
+				{
+					color: #ff0;
+					display: block;
+					font-size: 10px;
+				}
 
 			.form-cusquena input#form_day,
 			.form-cusquena input#form_month,
