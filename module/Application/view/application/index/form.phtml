@@ -77,8 +77,23 @@
 				},
 				submitHandler: function(form) {
 					
-					console.log( $(form).serialize() );
-					
+					var o_form = JSON.stringify($(form).serializeObject());
+					$.ajax({
+		                url:url_save
+		                ,data:{form:o_form}
+		                ,type:'POST'
+		                ,datatype:'json'
+		                ,async:true
+		                ,success:function(response){
+		                    var rpta = JSON.parse(response);
+		                        if(rpta.value == 1){
+		                        	console.log('OK');
+		                        }
+		                        if(rpta.value==0){console.log('invalidos');}
+		                        if(rpta.value==2){console.log('invalidos');}
+		                  
+		                }
+		            });
 				},
 				rules: {
 					nombre: {
