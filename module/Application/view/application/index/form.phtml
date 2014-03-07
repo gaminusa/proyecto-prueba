@@ -64,7 +64,9 @@
 	<script type="text/javascript"> 
 	    var url_save = "<?php echo $this->url('save') ?>";
 	    
-	    $(document).ready(function(){
+	    $(function(){
+	    	
+	    	$('#form_registro input').placeholder();
 	
 			$("#form_registro").validate({
 				debug: false,
