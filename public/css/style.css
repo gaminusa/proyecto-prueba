@@ -88,6 +88,9 @@ body
 			display: block;
 			margin: 30px auto 0;
 			height: 256px;
+			left: 150px;
+			position: absolute;
+			top: 30px;
 			width: 243px;
 		}
 		
@@ -108,7 +111,7 @@ body
 		{
 			background: url('../img/beers.png') no-repeat 0 0;
 			height: 379px;
-			left: 0;
+			left: 15px;
 			position: absolute;
 			top: 345px;
 			width: 510px;
@@ -118,16 +121,37 @@ body
 		{
 			margin: 170px 0 0;
 		}
-	
+		
 			.form-cusquena label
 			{
 				color: #fff;
 				font: normal normal 16px/1.3em 'Calibri Bold', Arial, sans-serif;
 				text-transform: uppercase;
 				
-				-webkit-text-shadow:  0 2px 2px 0 rgba(43, 24, 6, 0.98);
-				-moz-text-shadow:  0 2px 2px 0 rgba(43, 24, 6, 0.98);
-				text-shadow:  0 2px 2px 0 rgba(43, 24, 6, 0.98);
+				-webkit-text-shadow:  0 2px 2px rgba(43, 24, 6, 0.98);
+				-moz-text-shadow:  0 2px 2px rgba(43, 24, 6, 0.98);
+				text-shadow:  0 2px 2px rgba(43, 24, 6, 0.98);
+			}
+			
+			.form-cusquena input
+			{
+				border: 1px solid #821718;
+				font-size: 12px;
+				height: 30px;
+					
+				-webkit-border-radius: 0;
+				-moz-border-radius: 0;
+				border-radius: 0;
+			}
+			
+			.form-cusquena .btn-sign-in
+			{
+				background: url('../img/sprite.png') no-repeat 0 -257px;
+				border: 0;
+				height: 42px;
+				overflow: hidden;
+				text-indent: -999px;
+				width: 86px;
 			}
 	
 	.mainfooter
