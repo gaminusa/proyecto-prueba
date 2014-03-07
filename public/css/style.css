@@ -63,7 +63,8 @@ font-style: normal;
 
 body
 {
-	background: url('../img/bg-content.jpg') no-repeat center 17px;
+	background: #000 url('../img/bg-content.jpg') no-repeat center 17px;
+	padding: 0;
 }
 
 #wrapper
@@ -80,12 +81,21 @@ body
 		height: 696px;
 	}
 	
-		.form-cusquena label
+		.form-login
 		{
-			color: #fff;
-			font: normal normal 16px/1.3em 'Calibri Bold', Arial, sans-serif;
-			text-transform: uppercase;
+			margin: 170px 0 0;
 		}
+	
+			.form-cusquena label
+			{
+				color: #fff;
+				font: normal normal 16px/1.3em 'Calibri Bold', Arial, sans-serif;
+				text-transform: uppercase;
+				
+				-webkit-text-shadow:  0 2px 2px 0 rgba(43, 24, 6, 0.98);
+				-moz-text-shadow:  0 2px 2px 0 rgba(43, 24, 6, 0.98);
+				text-shadow:  0 2px 2px 0 rgba(43, 24, 6, 0.98);
+			}
 	
 	.mainfooter
 	{
@@ -95,6 +105,7 @@ body
 		.mainfooter small
 		{
 			color: #918279;
+			display: block;
 			font: normal normal 12px/1.3em Arial, Helvetica, sans-serif;
 			text-align: center;
 		}
