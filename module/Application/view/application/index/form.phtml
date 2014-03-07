@@ -73,6 +73,9 @@
 				errorPlacement: function(error, element) {
 					return false;
 				},
+				submitHandler: function(form) {
+					$(form).ajaxSubmit();
+				}
 				rules: {
 					nombre: "required",
 					apellidos: "required",
@@ -97,7 +100,7 @@
 					apellidos: "",
 					email: ""
 				}
-			});    	
+			});
 	
 	    });
 
