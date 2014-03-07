@@ -78,7 +78,9 @@
 				submitHandler: function(form) {
 					
 					var options = {
-						target: '#form_response'
+						success: function(responseText, statusText, xhr, $form){
+							
+						}
 					}
 					
 					$(form).ajaxSubmit(options);
