@@ -61,5 +61,44 @@ font-weight: normal;
 font-style: normal;
 }
 
+body
+{
+	background: url('../img/bg-content.jpg') no-repeat center 17px;
+}
 
+#wrapper
+{
+	display: block;
+	margin: 0 auto;
+	min-height: 733px;
+	width: 960px;
+}
 
+	.maincontent
+	{
+		display: block;
+		height: 696px;
+	}
+	
+		.form-cusquena label
+		{
+			color: #fff;
+			font: normal normal 16px/1.3em 'Calibri Bold', Arial, sans-serif;
+			text-transform: uppercase;
+		}
+	
+	.mainfooter
+	{
+		display: block;
+	}
+	
+		.mainfooter small
+		{
+			color: #918279;
+			font: normal normal 12px/1.3em Arial, Helvetica, sans-serif;
+			text-align: center;
+		}
+
+/* login */
+
+	
