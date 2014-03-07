@@ -73,18 +73,6 @@
                 var r = new Date;
                 return r.setFullYear(ServerData.now.getFullYear() - s), r >= o
 			}, jQuery.validator.format("Debes ser mayor de 18 años"));
-
-			jQuery.validator.addMethod("check_age", function () {
-                var e = $(t.formInputDay).val(),
-                    i = $(t.formInputMonth).val(),
-                    n = $(t.formInputYear).val(),
-                    s = 18,
-                    o = new Date;
-                o.setFullYear(n, i - 1, e);
-                var r = new Date;
-                return r.setFullYear(ServerData.now.getFullYear() - s), r >= o
-            }, "age")
-
 /**/	    	
 	    	
 	    	
