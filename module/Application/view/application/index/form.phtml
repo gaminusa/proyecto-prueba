@@ -5,96 +5,116 @@
 </div>-->
 
 
-<script type="text/javascript"> 
-    var url_save = "<?php echo $this->url('save') ?>";
-    
-    $(document).ready(function(){
-        $("#enviar").click(function(){
-            var o_form = new Object();
-            o_form.nombre = $("#nombre").val();
-            o_form.apellidos = $("#apellidos").val();
-            o_form.fecha_nacimiento = $("#fecha_nacimiento").val();
-            o_form.dni = $("#dni").val();
-            o_form.telefono = $("#telefono").val();
-            o_form.codigo_premiacion = $("#codigo_premiacion").val();
-            o_form.email = $("#email").val();
-            o_form.agencia = $("#agencia").val();
-            o_form.direccion = $("#direccion").val();
-            $.ajax({
-                url:'/application/index/save'
-                ,data:{form:o_form}
-                ,type:'POST'
-                ,datatype:'json'
-                ,async:true
-                ,success:function(response){
-                  ;
-                }
-            });  
-        });
-    });
-
-</script>
-
-
 <div class="row">
-    <form class="form-horizontal" method="POST" id="form_registro">
+    <form class="form form-cusquena" method="POST" id="form_registro">
         <div class="form-group">
-            <label for="nombre" class="col-sm-5 control-label">Nombre(s)</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre">
-            </div>
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="ESCRIBE EL NOMBRE" name="nombre" tabindex="1">
         </div>
         <div class="form-group">
-            <label for="apellidos" class="col-sm-5 control-label">Apellidos</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" name="apellidos">
-            </div>
+            <label for="apellidos">Apellidos</label>
+            <input type="text" class="form-control" id="apellidos" placeholder="ESCRIBE EL APELLIDO" name="apellidos" tabindex="2">
         </div>
         <div class="form-group">
-            <label for="fecha_nacimiento" class="col-sm-5 control-label">Fecha de Nacimiento</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="fecha_nacimiento" placeholder="Ingrese su Fecha de Nacimiento" name="fecha_nacimiento">
-            </div>
+            <label for="email">Correo Electr&oacute;nico</label>
+            <input type="text" class="form-control" id="email" placeholder="ESCRIBE EL CORREO ELECTR&Oacute;NICO" name="email" tabindex="3">
         </div>
         <div class="form-group">
-            <label for="dni" class="col-sm-5 control-label">DNI</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="dni" placeholder="Ingrese su DNI" name="dni">
+            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+            <div class="row">
+            	<div class="col-xs-3">
+				    <input type="text" class="form-control" id="form_day" name="form_day" maxlength="2" tabindex="4" placeholder="DD">
+			    </div>
+            	<div class="col-xs-3">
+				    <input type="text" class="form-control" id="form_month" name="form_month" maxlength="2" tabindex="5" placeholder="MM">
+			    </div>
+            	<div class="col-xs-4">
+				    <input type="text" class="form-control" id="form_year" name="form_year" maxlength="4" tabindex="6" placeholder="AAAA">
+			    </div>
             </div>
+            <input type="hidden" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento">
         </div>
         <div class="form-group">
-            <label for="telefono" class="col-sm-5 control-label">Teléfono</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="telefono" placeholder="Ingrese su telefono" name="telefono">
-            </div>
+            <label for="dni">DNI</label>
+            <input type="text" class="form-control" id="dni" placeholder="ESCRIBE EL DNI" name="dni" tabindex="7">
         </div>
         <div class="form-group">
-            <label for="codigo_premiacion" class="col-sm-5 control-label">Código de Premiación</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="codigo_premiacion" placeholder="Ingrese su Código de Premiación" name="codigo_premiacion">
-            </div>
+            <label for="telefono">Tel&eacute;fono</label>
+            <input type="text" class="form-control" id="telefono" placeholder="ESCRIBE EL N&Uacute;MERO DE TEL&Eacute;FONO" name="telefono" tabindex="8">
         </div>
         <div class="form-group">
-            <label for="email" class="col-sm-5 control-label">Correo Electrónico</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="email" placeholder="Ingrese su Correo Electrónico" name="email">
-            </div>
+            <label for="codigo_premiacion">C&oacute;digo</label>
+            <input type="text" class="form-control" id="codigo_premiacion" placeholder="ESCRIBE EL C&Oacute;DIGO" name="codigo_premiacion" tabindex="9">
         </div>
         <div class="form-group">
-            <label for="agencia" class="col-sm-5 control-label">Agencia BBVA</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="agencia" placeholder="Escriba el nombre de la Agencia" name="agencia">
-            </div>
+            <label for="agencia" style="text-transform: none;">Ingresa la agencia BBVA CONTINENTAL m&aacute;s cerca </label>
+            <input type="text" class="form-control" id="agencia" placeholder="ESCRIBA EL NOMBRE DE LA AGENCIA" name="agencia" tabindex="10">
         </div>
+<!--        
         <div class="form-group">
-            <label for="direccion" class="col-sm-5 control-label">Direccion</label>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" id="direccion" placeholder="Escriba su Direccion" name="direccion">
-            </div>
+            <label for="direccion">Direcci&oacute;n</label>
+            <input type="text" class="form-control" id="direccion" placeholder="Escriba su Direcci&oacute;n" name="direccion">
         </div>
-        <center> 
-            <button id="enviar" type="button" class="btn btn-primary">Guardar</button>
-        </center>
+-->
+        <div class="form-group">
+            <button id="enviar" type="submit" class="btn btn-primary btn-saveuser">Guardar</button>
+        </div>
     </form>
+
+	<script type="text/javascript"> 
+	    var url_save = "<?php echo $this->url('save') ?>";
+	    
+	    $(function(){
+	    	
+	    	$('#form_registro input').placeholder();
+	
+			$("#form_registro").validate({
+				debug: false,
+				errorPlacement: function(error, element) {
+					return false;
+				},
+				rules: {
+					nombre: "required",
+					apellidos: "required",
+					email: {
+						required: true,
+						email: true
+					},
+					form_day: "required",
+					form_month: "required",
+					form_year: "required",
+					dni: {
+						required: true
+					},
+					telefono: {
+						required: true
+					},
+					codigo_premiacion: "required",
+					agencia: "required"
+				},
+				messages: {
+					nombre: "",
+					apellidos: "",
+					email: ""
+				}
+			});    	
+	
+	    });
+
+
+		$('#form_day, #form_month, #form_year').on('keyup', function(evt){
+			
+					this.value = this.value.replace(/[^0-9]/g, '');
+					if(this.value.length == parseInt(this.attributes['maxlength'].value))
+					{
+						$('input#fecha_nacimiento').val( [ $('input#form_year').val(), $('input#form_month').val(), $('input#form_day').val() ].join('/') );
+					}
+		});
+
+	
+	</script>
+
+
+
 </div>
 
