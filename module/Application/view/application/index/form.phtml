@@ -44,7 +44,7 @@
         </div>
         <div class="form-group">
             <label for="codigo_premiacion">C&oacute;digo</label>
-            <input type="text" class="form-control" id="codigo_premiacion" placeholder="ESCRIBE EL C&Oacute;DIGO" name="codigo_premiacion" tabindex="9">
+            <input type="text" class="form-control" id="codigo_premiacion" placeholder="ESCRIBE EL C&Oacute;DIGO" name="codigo_premiacion" maxlength="8" tabindex="9">
         </div>
         <div class="form-group">
             <label for="agencia" style="text-transform: none;">Ingresa la agencia BBVA CONTINENTAL m&aacute;s cerca </label>
@@ -70,8 +70,9 @@
 	
 			$("#form_registro").validate({
 				debug: false,
+				errorElement: "div",
 				errorPlacement: function(error, element) {
-					return false;
+					error.insertAfter(element);
 				},
 				submitHandler: function(form) {
 					$(form).ajaxSubmit();
@@ -89,10 +90,6 @@
 					dni: {
 						required: true,
 						digits: true,
-						remote: {
-							url: '',
-							type: 'post'
-						}
 					},
 					telefono: {
 						required: true,
@@ -100,10 +97,6 @@
 					},
 					codigo_premiacion: {
 						required: true,
-						remote: {
-							url: '',
-							type: 'post'
-						}
 					},
 					agencia: {
 						required: true
