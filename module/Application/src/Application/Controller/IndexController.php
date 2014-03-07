@@ -6,6 +6,7 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Model\TemporalChapa;
 use Application\Model\PromoCodigo;
+use Application\Model\PromoChico;
 use Application\Model\PromoGanador;
 
 
@@ -17,6 +18,12 @@ class IndexController extends AbstractActionController
 
     public function indexAction()
     {
+        
+        return new ViewModel();
+    }
+    
+    public function formAction(){
+        echo "entro";
         return new ViewModel();
     }
     
@@ -35,7 +42,10 @@ class IndexController extends AbstractActionController
                     if ($d_dni == '') {
                         $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter');
                         $o_chapas = new TemporalChapa($this->dbAdapter);
+                        $o_promo = new PromoChico($this->dbAdapter);
                         $o_chapas->save($form);
+                        $o_promo->updateClaimed();
+                        
                         return $this->getResponse()->setContent(json_encode(array('value' => 1)));
                     } else {
                         return $this->getResponse()->setContent(json_encode(array('value' => 3)));

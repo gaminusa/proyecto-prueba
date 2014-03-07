@@ -20,6 +20,16 @@ return array(
                     ),
                 ),
             ),
+            'form' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/form',
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Index',
+                        'action'     => 'form',
+                    ),
+                ),
+            ),
             'save' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(

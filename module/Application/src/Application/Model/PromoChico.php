@@ -14,10 +14,18 @@ class PromoChico extends TableGateway {
     }
     
     public function get(){
-        return $this->select()->toArray();
+        return $this->select(array('id'=>1))->current();
     }
     
-    public function updateClaimed(){
+    public function updateClaimed() {
+        $prom = $this->get();
+        $claimed = $prom['claimed'];
         
+        $data = array(
+            'claimed' => $claimed+1
+        );
+        
+        $this->update($data);
     }
+
 }
