@@ -121,6 +121,7 @@ def post_setup():
     """
     with cd(DEPLOY_PATH):
         sudo('cp jenkins/cusquena-chapas2-staging.conf /etc/nginx/conf.d/')
+	sudo('php composer.phar install')
 
         with settings(warn_only=True):
             sudo('service nginx reload')
