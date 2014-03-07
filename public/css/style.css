@@ -117,11 +117,6 @@ body
 			width: 510px;
 		}
 	
-		.form-login
-		{
-			margin: 170px 0 0;
-		}
-		
 		.form-cusquena
 		{
 			margin: 50px 0 0;
@@ -161,6 +156,7 @@ body
 			.form-cusquena input#form_month,
 			.form-cusquena input#form_year
 			{
+				text-align: center;
 				width: 92%;
 			}
 
@@ -189,7 +185,12 @@ body
 			{
 				background: url('../img/sprite.png') no-repeat -86px -257px;
 			}
-	
+
+		.form-login
+		{
+			margin: 170px 0 0;
+		}
+		
 	.mainfooter
 	{
 		display: block;
