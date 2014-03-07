@@ -16,13 +16,13 @@
             <label for="fecha_nacimiento">Fecha de Nacimiento</label>
             <div class="row">
             	<div class="col-xs-3">
-				    <input type="text" class="form-control" id="form_day" name="form_day" maxlength="2" tabindex="4" placeholder="DD">
+				    <input type="text" class="form-control check_age" id="form_day" name="form_day" maxlength="2" tabindex="4" placeholder="DD">
 			    </div>
             	<div class="col-xs-3">
-				    <input type="text" class="form-control" id="form_month" name="form_month" maxlength="2" tabindex="5" placeholder="MM">
+				    <input type="text" class="form-control check_age" id="form_month" name="form_month" maxlength="2" tabindex="5" placeholder="MM">
 			    </div>
             	<div class="col-xs-4">
-				    <input type="text" class="form-control" id="form_year" name="form_year" maxlength="4" tabindex="6" placeholder="AAAA">
+				    <input type="text" class="form-control check_age" id="form_year" name="form_year" maxlength="4" tabindex="6" placeholder="AAAA">
 			    </div>
             </div>
             <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" style="display: none !important;">
@@ -60,6 +60,33 @@
 	    $(function(){
 	    	
 	    	$('#form_registro input').placeholder();
+	    	
+/**/	    	
+			jQuery.validator.addMethod("check_age", function(value, element) {
+
+                var e = $('#form_day').val(),
+                    i = $('#form_month').val(),
+                    n = $('#form_year').val(),
+                    s = 18,
+                    o = new Date;
+                o.setFullYear(n, i - 1, e);
+                var r = new Date;
+                return r.setFullYear(ServerData.now.getFullYear() - s), r >= o
+			}, jQuery.validator.format("Debes ser mayor de 18 años"));
+
+			jQuery.validator.addMethod("check_age", function () {
+                var e = $(t.formInputDay).val(),
+                    i = $(t.formInputMonth).val(),
+                    n = $(t.formInputYear).val(),
+                    s = 18,
+                    o = new Date;
+                o.setFullYear(n, i - 1, e);
+                var r = new Date;
+                return r.setFullYear(ServerData.now.getFullYear() - s), r >= o
+            }, "age")
+
+/**/	    	
+	    	
 	    	
 			$("#form_registro").validate({
 				debug: true,
@@ -129,7 +156,8 @@
 					},
 					fecha_nacimiento: {
 						required: true,
-						date: true
+						date: true,
+						check_age: true
 					},
 					dni: {
 						required: true,
@@ -158,7 +186,8 @@
 					form_year: '',
 					fecha_nacimiento: {
 						required: 'Llene correctamente este campo',
-						date: 'Llene correctamente este campo'
+						date: 'Llene correctamente este campo',
+						check_age: 'Debes ser mayor de 18 años'
 					},
 					dni: {
 						required: 'Llene correctamente este campo',
