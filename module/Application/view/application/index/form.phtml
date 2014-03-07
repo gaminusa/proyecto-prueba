@@ -71,8 +71,13 @@
 			$("#form_registro").validate({
 				debug: false,
 				ignore: '',
-				onkeyup: true,
-				onsubmit: false,
+				onkeyup: function(element){
+					if ( event.which === 9 && this.elementValue(element) === "" ) {
+			            return;
+			        } else {
+			            this.element(element);
+			        }
+				},
 				errorElement: "div",
 				errorPlacement: function(error, element) {
 					error.insertAfter(element);
@@ -92,16 +97,25 @@
 						required: true,
 						email: true
 					},
-					form_day: "required",
-					form_month: "required",
-					form_year: "required",
+					form_day: {
+						required: true,
+						digits: true
+					},
+					form_month: {
+						required: true,
+						digits: true
+					},
+					form_year: {
+						required: true,
+						digits: true
+					},
 					fecha_nacimiento: {
 						required: true,
 						date: true
 					},
 					dni: {
 						required: true,
-						digits: true,
+						digits: true
 					},
 					telefono: {
 						required: true,
@@ -150,9 +164,9 @@
 	    });
 
 		
-		// filter date
+		// filter & build date
 		$('#form_day, #form_month, #form_year').on('keyup', function(evt){
-//			this.value = this.value.replace(/[^0-9]/g, '');
+			this.value = this.value.replace(/[^0-9]/g, '');
 			if(this.value.length == parseInt(this.attributes['maxlength'].value))
 			{
 				$('input#fecha_nacimiento').val( [ $('input#form_year').val(), $('input#form_month').val(), $('input#form_day').val() ].join('/') );
