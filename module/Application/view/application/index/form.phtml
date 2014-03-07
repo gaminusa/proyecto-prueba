@@ -6,7 +6,7 @@
 
 
 <div class="row">
-    <form class="form form-cusquena" method="POST" id="form_registro">
+    <form class="form form-cusquena" action="<?php echo $this->url('save') ?>" method="POST" id="form_registro">
         <div class="form-group">
             <label for="nombre">Nombre</label>
             <input type="text" class="form-control" id="nombre" placeholder="ESCRIBE EL NOMBRE" name="nombre" tabindex="1">
@@ -36,11 +36,11 @@
         </div>
         <div class="form-group">
             <label for="dni">DNI</label>
-            <input type="text" class="form-control" id="dni" placeholder="ESCRIBE EL DNI" name="dni" tabindex="7">
+            <input type="text" class="form-control" id="dni" placeholder="ESCRIBE EL DNI" name="dni" tabindex="7" maxlength="8">
         </div>
         <div class="form-group">
             <label for="telefono">Tel&eacute;fono</label>
-            <input type="text" class="form-control" id="telefono" placeholder="ESCRIBE EL N&Uacute;MERO DE TEL&Eacute;FONO" name="telefono" tabindex="8">
+            <input type="text" class="form-control" id="telefono" placeholder="ESCRIBE EL N&Uacute;MERO DE TEL&Eacute;FONO" name="telefono" tabindex="8" maxlength="9">
         </div>
         <div class="form-group">
             <label for="codigo_premiacion">C&oacute;digo</label>
@@ -87,13 +87,27 @@
 					form_month: "required",
 					form_year: "required",
 					dni: {
-						required: true
+						required: true,
+						digits: true,
+						remote: {
+							url: '<?php echo $this->url('validarDNI') ?>',
+							type: 'post'
+						}
 					},
 					telefono: {
-						required: true
+						required: true,
+						digits: true
 					},
-					codigo_premiacion: "required",
-					agencia: "required"
+					codigo_premiacion: {
+						required: true,
+						remote: {
+							url: '<?php echo $this->url('validar') ?>',
+							type: 'post'
+						}
+					},
+					agencia: {
+						required: true
+					}
 				},
 				messages: {
 					nombre: "",
@@ -104,17 +118,16 @@
 	
 	    });
 
-
+		
+		// filter date
 		$('#form_day, #form_month, #form_year').on('keyup', function(evt){
-			
 					this.value = this.value.replace(/[^0-9]/g, '');
 					if(this.value.length == parseInt(this.attributes['maxlength'].value))
 					{
 						$('input#fecha_nacimiento').val( [ $('input#form_year').val(), $('input#form_month').val(), $('input#form_day').val() ].join('/') );
 					}
 		});
-
-	
+		
 	</script>
 
 
