@@ -30,9 +30,22 @@ class PromoCodigo extends TableGateway {
         );
         $statement = $sql->prepareStatementForSqlObject($select);
         $statement = $this->adapter->query($statement->getSql());
-        $results = $statement->execute();
+        $results = $statement->execute()->current();
         
-        return count($results);
+        return $results;
     }
-
+    
+    public function updateClaimed($codigo){
+        
+        $data = array(
+            'claimed' =>1);
+        
+        $sql = new Sql($this->adapater);
+        $update = $sql->update();
+        $update->table('default_promo_codigos');
+        $update->set($data);
+        $update->where(array('code' => $codigo));
+        $statement = $sql->prepareStatementForSqlObject($update);        
+        $statement->execute();     
+    }
 }

@@ -20,12 +20,27 @@ class PromoChico extends TableGateway {
     public function updateClaimed() {
         $prom = $this->get();
         $claimed = $prom['claimed'];
-        
         $data = array(
-            'claimed' => $claimed+1
-        );
+            'claimed' =>$claimed+1);
         
-        $this->update($data);
+        $sql = new Sql($this->adapater);
+        $update = $sql->update();
+        $update->table('default_promo_chicos');
+        $update->set($data);
+        $update->where(array('id' => 1));
+        $statement = $sql->prepareStatementForSqlObject($update);        
+        $statement->execute();     
+    }
+    
+    public function verificarStock(){
+        $prom = $this->get();
+        $quanti = $prom['quantity'];
+        $claimed = $prom['claimed'];
+            if($quanti>$claimed){
+                return 1;
+            }else{
+                return 0;
+            }
     }
 
 }

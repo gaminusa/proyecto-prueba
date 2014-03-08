@@ -78,19 +78,29 @@ class IndexController extends AbstractActionController
             $codigo = $form['codigo_premiacion'];
             $dni = $form['dni'];
             $validar = $this->validar($codigo);
-
-            if ($validar == 1) {
+            if ($validar != '' ) {
                 $duplicado = $this->validarDuplicado($codigo);
                 if ($duplicado == 1) {
                     $d_dni = $this->validarDNI($dni);
                     if ($d_dni == '') {
-                        $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter');
-                        $o_chapas = new TemporalChapa($this->dbAdapter);
-                        $o_promo = new PromoChico($this->dbAdapter);
-                        $o_chapas->save($form);
-                        $o_promo->updateClaimed();
-                        
-                        return $this->getResponse()->setContent(json_encode(array('value' => 1)));
+                        $dni_du = $this->validarDNIDuplicado($dni);
+                        if($dni_du == ''){
+                            $stock = $this->validarStock();
+                            if($stock == 1){
+                                $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter');
+                                $o_chapas = new TemporalChapa($this->dbAdapter);
+                                $o_promo = new PromoChico($this->dbAdapter);
+                                $o_codigo = new PromoCodigo($this->dbAdapter);
+                                $o_codigo->updateClaimed($form['codigo_premiacion']);
+                                $o_promo->updateClaimed();
+                                $o_chapas->save($form);
+                                return $this->getResponse()->setContent(json_encode(array('value' => 1)));
+                            }else{
+                                return $this->getResponse()->setContent(json_encode(array('value' => 4)));
+                            }
+                        }else{
+                            return $this->getResponse()->setContent(json_encode(array('value' => 3)));
+                        }
                     } else {
                         return $this->getResponse()->setContent(json_encode(array('value' => 3)));
                     }
@@ -126,6 +136,22 @@ class IndexController extends AbstractActionController
         $cont_dni = $o_dni->dniDuplicado($dni);
         
         return $cont_dni;
+    }
+    
+    private function validarDNIDuplicado($dni){
+        $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter');
+        $o_dni = new TemporalChapa($this->dbAdapter);
+        $cont_dni = $o_dni->dniDuplica($dni);
+        
+        return $cont_dni;
+    }
+    
+    private function validarStock(){
+        $this->dbAdapter = $this->getServiceLocator()->get('Zend\Db\Adapter');
+        $o_promo = new PromoChico($this->dbAdapter);
+        $stock = $o_promo->verificarStock();
+        
+        return $stock;
     }
 
 }
