@@ -61,6 +61,21 @@
 	    	
 	    	$('#form_registro input').placeholder();
 	    	
+/**/	    	
+			jQuery.validator.addMethod("check_age", function(value, element) {
+
+                var e = $('#form_day').val(),
+                    i = $('#form_month').val(),
+                    n = $('#form_year').val(),
+                    s = 18,
+                    o = new Date;
+                o.setFullYear(n, i - 1, e);
+                var r = new Date;
+                return r.setFullYear(ServerData.now.getFullYear() - s), r >= o
+			}, jQuery.validator.format("Debes ser mayor de 18 años"));
+/**/	    	
+	    	
+	    	
 			$("#form_registro").validate({
 				debug: true,
 				ignore: '',
@@ -129,7 +144,8 @@
 					},
 					fecha_nacimiento: {
 						required: true,
-						date: true
+						date: true,
+						check_age: true
 					},
 					dni: {
 						required: true,
@@ -158,7 +174,8 @@
 					form_year: '',
 					fecha_nacimiento: {
 						required: 'Llene correctamente este campo',
-						date: 'Llene correctamente este campo'
+						date: 'Llene correctamente este campo',
+						check_age: 'Debes ser mayor de 18 años'
 					},
 					dni: {
 						required: 'Llene correctamente este campo',
