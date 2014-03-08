@@ -24,8 +24,7 @@ class TemporalChapa extends TableGateway {
             'codigo_premio'     => $form['codigo_premiacion'],
             'email'             => $form['email'],
             'agencia_bbva'      => $form['agencia'],
-            'fecha_registro'    => date('Y-m-d H:i:s'),
-            'direccion'         => $form['direccion']
+            'fecha_registro'    => date('Y-m-d H:i:s')
         );
             return $this->insert($data);
     }
@@ -37,6 +36,11 @@ class TemporalChapa extends TableGateway {
     public function duplicado($codigo){
         $row = $this->select(array('codigo_premio' => $codigo))->current();
         return count($row);
+    }
+    
+    public function dniDuplica($dni){
+        return $this->select(array('dni' => $dni))->current();
+        
     }
 
 }
