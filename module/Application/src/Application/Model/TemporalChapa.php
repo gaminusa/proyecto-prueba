@@ -34,8 +34,7 @@ class TemporalChapa extends TableGateway {
     }
     
     public function duplicado($codigo){
-        $row = $this->select(array('codigo_premio' => $codigo))->current();
-        return $row;
+        return $this->select(array('codigo_premio' => $codigo))->current();
     }
     
     public function dniDuplica($dni){
