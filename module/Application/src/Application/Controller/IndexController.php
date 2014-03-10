@@ -77,10 +77,11 @@ class IndexController extends AbstractActionController
             $form = $this->getRequest()->getPost('form');
             $codigo = $form['codigo_premiacion'];
             $dni = $form['dni'];
+            //validar si el codigo ya fue ingresado en promo_codigos
             $validar = $this->validar($codigo);
             if ($validar != '' ) {
                 $duplicado = $this->validarDuplicado($codigo);
-                if ($duplicado == 1) {
+                if ($duplicado != '') {
                     $d_dni = $this->validarDNI($dni);
                     if ($d_dni == '') {
                         $dni_du = $this->validarDNIDuplicado($dni);
