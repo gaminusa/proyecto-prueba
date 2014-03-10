@@ -222,6 +222,71 @@ body
 			text-align: center;
 		}
 
-/* login */
+/* overlay */
 
+.overlay
+{
+	background: url('../img/bg-overlay.png') repeat 0 0;
+	display: none;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+	.overlay .message-r
+	{
+		background: url('../img/bg-final.png') no-repeat 0 0;
+		display: none;
+		height: 654px;
+		left: 50%;
+		margin: 0 0 0 -271px;
+		overflow: hidden;
+		position: absolute;
+		top: 20px;
+		width: 543px;
+	}
+	
+		.message-r .text
+		{
+			background-image: url('../img/sprite-messages.png');
+			height: 350px;
+			margin: 100px auto 0;
+			width: 265px;
+		}
+
+		.message-r .accept:link,
+		.message-r .accept:visited,
+		.message-r .accept:active,
+		.message-r .accept:hover
+		{
+			background: url('../img/sprite.png') no-repeat -172px -257px;
+			display: block;
+			height: 42px;
+			margin: 10px auto;
+			overflow: hidden;
+			text-indent: -999px;
+			width: 101px;
+		}
+
+		.message-1 .text
+		{
+			background-position: -265px 0;
+		}	
+		.message-0 .text
+		{
+			background-position: 0 0;
+		}	
+		.message-3 .text
+		{
+			background-position: -530px 0;
+		}	
+		.message-4 .text
+		{
+			background-position: -795px 0;
+		}	
+	
+	
+	
 	
