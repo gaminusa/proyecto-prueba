@@ -82,7 +82,7 @@
 	    	
 	    	
 			$("#form_registro").validate({
-				debug: true,
+				debug: false,
 				ignore: '',
 				onkeyup: function(element, event){
 					if ( event.which === 9 && this.elementValue(element)  === "") {
@@ -114,12 +114,13 @@
 		                ,datatype:'json'
 		                ,async:true
 		                ,success:function(response){
+		                	console.log(response);
 		                    var rpta = JSON.parse(response);
 	                        if(rpta.value == 1){
 	                        	$('.overlay').show();
 	                        	$('.message-1').show();
 	                        }
-	                        if(rpta.value==0 && rpta.value==2){
+	                        if(rpta.value==0 || rpta.value==2){
 	                        	$('.overlay').show();
 	                        	$('.message-0').show();
 							}
